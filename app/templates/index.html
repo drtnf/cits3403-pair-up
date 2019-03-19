@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form name='login' action='' method='post'>
+    <div class='form-group'>
+      <label for="studNo">Student Number:<label>
+      <input type="text" class="form-control" id="studNo" name="studNo" placeholder="what's your student number"></div>
+      <button type='submit' class='btn btn-success'>Login/Register</button>
+    </div>
+
+  <div class='table-responsive'>
+  <h3>Registered project list</h3>
+  <table class='table-striped'>
+    <tr>
+      <th>Project ID</th>
+      <th>Project Name</th>
+      <th>Project Team</th>
+      <th>Demo location</th>
+      <th>Demo time</th></tr>
+    {% for p in projects%}
+    <tr>
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.team}}</td>
+      <td>{{p.demonstration.location}}</td>
+      <td>{{p.demonstration.datetime}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+{% endblock %}
+

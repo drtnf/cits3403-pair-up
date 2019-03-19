@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+      <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+      <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      //include AJAX function to check group, probably put in script files
+    <script>
+      checkStudentNumber(){
+        //check student number
+        //enter nice greeting to callista name
+        //if no pin set, ask them to set pin
+        //if pin set, ask them to enter pin
+        //if not in class, alert that student number not registered 
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class='container'>
+    <h1>Pair Up!<h1>
+        <h3>CITS3403 group allocation tool, and flask sample project</h3>
+
+        {% block content%}
+        {% endblock %}
+  </div>
+  <!-- Footer -->
+  <footer class="page-footer font-small blue pt-4">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">Written by Tim, 2019, for 
+      <a href="http://teaching.csse.uwa.edu.au/units/CITS3403/index.php?fname=projects&project=yes"> CITS3403 Agile Web Development Project</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+  </body>
+</html>
+
+
