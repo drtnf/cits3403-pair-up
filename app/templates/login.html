@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Login</h2>
+
+  <form name='login' action='' method='post' novalidate>
+    <div class='form-group'>
+      {{form.hidden_tag()}}
+      <p>
+      {{ form.studentNumber.label }}<br>
+      {{ form.studentNumber(size=8) }}
+      {% for error in form.studentNumber.errors %}
+      <span style="color:red;">[{{ error}}]</span>
+      {% endfor %}
+      </p>
+      <p>
+      {{ form.pinCode.label }}<br>
+      {{ form.pinCode(size=4) }}
+      {% for error in form.pinCode.errors %}
+      <span style="color:red;">[{{ error}}]</span>
+      {% endfor %}
+      </p>
+      <p> {{form.remember_me() }} {{form.remember_me.label }}</p>
+      <p> {{ form.submit() }}</p>
+    </div>
+  </form>
+  {% endblock %}
