@@ -26,7 +26,7 @@ Give examples
 
 ### Installing
 
-Install python3. I'm not sure at this stage how much of the virtual environment is serialized and wrapped up in venv. Hopefully all of it.
+Install python3, sqlite3
 
 set virtual environment
 `source virtual-environment/bin/activate`
@@ -34,6 +34,8 @@ set virtual environment
 `pip install flask`
 
 `flask run`
+
+set up database
 
 ## Running the tests
 
