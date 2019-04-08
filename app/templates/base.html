@@ -3,24 +3,40 @@
     <title>{{ title }}</title>
       <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
       <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+      <script src="static/bootstrap.min.js"></script>
+      <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous">
+      </script>      
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   </head>
 
   <body>
     <div class='container'>
+      <div class='col-sm-4'>
       <a href='{{ url_for("index") }}'>Home</a>
+      </div>
       {%if current_user.is_anonymous %}
-      <a href='{{ url_for("login") }}'>Login</a>
-      <a href='{{ url_for("register") }}'>Register</a>
+      <div class='col-sm-4'></div>
+      <div class='col-sm-4 text-right'>
+        <a href='{{ url_for("login") }}'>Login</a><br/>
+        <a href='{{ url_for("register") }}'>Register</a>
+      </div>  
       {% else %}
         {% if current_user.project_id == None %}
-        <a href='{{ url_for("new_project") }}'>Enter Project details</a>
+          <div class='col-sm-4 text-center'>
+            <a href='{{ url_for("new_project") }}'>Enter Project details</a>
+          </div>
         {% else %}
-        <a href='{{ url_for("edit_project") }}'>Edit Project details</a>
+          <div class='col-sm-4 text-center'>
+            <a href='{{ url_for("edit_project") }}'>Edit Project details</a>
+          </div>
         {% endif %}
-      <a href='{{ url_for("register") }}'>Update {{ current_user }}</a>
-      <a href='{{ url_for("logout") }}'>Logout {{ current_user }}</a>
+          <div class='col-sm-4 text-right'>
+            <a href='{{ url_for("register") }}'>Update {{ current_user.prefered_name }}</a><br/>
+            <a href='{{ url_for("logout") }}'>Logout {{ current_user.prefered_name }}</a>
+          </div>
       {%endif %}
     </div>
     <hr>
@@ -44,7 +60,7 @@
   <footer class="page-footer font-small blue pt-4">
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">Written by Tim, 2019, for 
-      <a href="http://teaching.csse.uwa.edu.au/units/CITS3403/index.php?fname=projects&project=yes"> CITS3403 Agile Web Development Project</a>
+      <a href="http://teaching.csse.uwa.edu.au/units/CITS3403/index.php?fname=projects&project=yes"> CITS3403 Agile Web Development Project</a> Source available on <a href="https://github.com/drtnf/cits3403-pair-up">github</a>.
     </div>
     <!-- Copyright -->
 
