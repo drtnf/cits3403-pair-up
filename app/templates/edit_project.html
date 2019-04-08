@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Project</h2>
+
+<div class="container">
+  <h4>{{student.prefered_name}}
+    {% if not partner == None %}
+         and
+         {{partner.prefered_name}}
+    {% endif %}'s Project Page
+  </h4> 
+  
+  <form name='registerProject' action='' method='post' novalidate>
+    <div class='form-group'>
+      {{form.hidden_tag()}}
+      <p>
+      {{ form.project_description.label }}<br>
+      {{ form.project_description(size=20, default=project.description) }}
+      {% for error in form.project_description.errors %}
+      <span style="color:red;">[{{ error}}]</span>
+      {% endfor %}
+      </p>
+      <p>
+      {{ form.lab.label }}<br>
+      {{ form.lab}}
+      </p>
+      <p> {{ form.submit() }}</p>
+    </div>
+  </form>
+  <h6>Cannot change partner's with in a project. To dissolve a team, delete the project.</h6>
+  {% endblock %}

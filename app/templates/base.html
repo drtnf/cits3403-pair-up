@@ -5,22 +5,23 @@
       <link rel="stylesheet" href="static/bootstrap-theme.min.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--include AJAX function to check group, probably put in script files-->
-    <script>
-      checkStudentNumber(){
-        //check student number
-        //enter nice greeting to callista name
-        //if no pin set, ask them to set pin
-        //if pin set, ask them to enter pin
-        //if not in class, alert that student number not registered 
-      }
-    </script>
   </head>
 
   <body>
     <div class='container'>
       <a href='{{ url_for("index") }}'>Home</a>
+      {%if current_user.is_anonymous %}
       <a href='{{ url_for("login") }}'>Login</a>
+      <a href='{{ url_for("register") }}'>Register</a>
+      {% else %}
+        {% if current_user.project_id == None %}
+        <a href='{{ url_for("new_project") }}'>Enter Project details</a>
+        {% else %}
+        <a href='{{ url_for("edit_project") }}'>Edit Project details</a>
+        {% endif %}
+      <a href='{{ url_for("register") }}'>Update {{ current_user }}</a>
+      <a href='{{ url_for("logout") }}'>Logout {{ current_user }}</a>
+      {%endif %}
     </div>
     <hr>
     {% with messages = get_flashed_messages() %}
@@ -34,7 +35,7 @@
     {% endwith %}
     <div class='container'>
     <h1>Pair Up!<h1>
-        <h3>CITS3403 group allocation tool, and flask sample project</h3>
+        <h3>CITS3403 group allocation tool, and flask sample project.</h3>
 
         {% block content%}
         {% endblock %}

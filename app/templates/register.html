@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Register</h1>
+  <form action="" method = "post">
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.student_number.label }}<br>
+      {{ form.student_number(size=8) }}<br>
+      {% for error in form.student_number.errors %}
+      <span style="color: red ;"> [{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.prefered_name.label }}<br>
+      {{ form.prefered_name(size=20) }}
+    </p>
+    {% if not current_user.is_anonymous %}
+    <p>
+      {{ form.pin.label }}<br>
+      {{ form.pin(size=4) }}<br>
+      {% for error in form.pin.errors %}
+      <span style="color:red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    {% endif %}
+    <p>
+      {{ form.new_pin.label }}<br>
+      {{ form.new_pin(size=4) }}<br>
+      {% for error in form.new_pin.errors %}
+      <span style="color: red ;"> [{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.new_pin2.label }}<br>
+      {{ form.new_pin2(size=4) }}<br>
+      {% for error in form.new_pin2.errors %}
+      <span style="color: red ;"> [{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>{{ form.submit() }} </p>
+  </form>
+{% endblock %}
+

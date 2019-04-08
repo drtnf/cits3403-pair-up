@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+  <head>
+    <title>Fickle</title>
+
+    <style>
+       p.important{
+         border-color:red;
+         border-style:double;
+       }
+
+
+       div.literature h3 + p{
+         font-style:italic;
+         font-weight:bold;
+       }
+
+       body.ok{
+         background-color:green;
+       }
+
+       body.notok{
+         background-color:red;
+       }
+
+       .centered{
+         margin-left:auto;
+         margin-right:auto;
+         margin-top:auto;
+         margin-bottom:auto;
+         width:15em;
+         line-height:40em;
+       }
+
+   </style>
+
+   <script>
+     function fickle(){
+       document.getElementById("clickme").innerHTML="Don't click me!";
+     }
+
+     function notFickle(){
+       document.getElementById("clickme").innerHTML="Click me!";
+     }
+
+     function disaster(){
+       document.getElementsByTagName("body")[0].className="notok";
+       document.getElementById("clickme").style.display="none";
+       document.getElementById("whyd").style.display="block";
+     }
+
+     function init(){
+       document.getElementById("clickme").onfocus = fickle;
+       document.getElementById("clickme").onmouseover = fickle;
+       document.getElementById("clickme").onblur = notFickle;
+       document.getElementById("clickme").onmouseout = notFickle;
+       document.getElementById("clickme").onclick = disaster;
+       document.getElementById("whyd").style.display="none";
+     }
+
+   </script>
+
+</head>
+<body class="ok" onLoad="init();">
+<!--Q3 h1> Testing page</h1>
+
+<p class="important">
+This is for the CITS3403/CITS5505 midsemester test. This is an import paragraph.
+</p>
+
+<div class="literature">
+  <h3>This is an h3 inside a literature div</h3>
+  <p>This is the first paragraph</p>
+  <p>This is the second paragraph</p>
+  <h3>Another H3</h3>
+  <p>...and another paragraph</p>
+  <p> The final paragraph, all inside a literature div.</p>
+</div-->
+<div class="centered">
+<button id="clickme" vertical-align="middle">Click me!</button>
+<p id="whyd" vertical-align="middle">What have you done?</a>
+</div>
+</body>
+</html>

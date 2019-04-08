@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>New Project</h2>
+
+<div class="container">
+  <h4>{{student.prefered_name}}</h4> 
+  
+  <form name='registerProject' action='' method='post' novalidate>
+    <div class='form-group'>
+      {{form.hidden_tag()}}
+      <p>
+      {{ form.partner_number.label }}<br>
+      {{ form.partner_number(size=8) }}
+      (Enter 00000000, for CITS5505 students electing to work alone)
+      {% for error in form.partner_number.errors %}
+      <span style="color:red;">[{{ error}}]</span>
+      {% endfor %}
+      </p>
+      <p>
+      {{ form.project_description.label }}<br>
+      {{ form.project_description(size=20) }}
+      {% for error in form.project_description.errors %}
+      <span style="color:red;">[{{ error}}]</span>
+      {% endfor %}
+      </p>
+      <p>
+      {{ form.lab.label }}<br>
+      {{ form.lab }}
+      </p>
+      <p> {{ form.submit() }}</p>
+    </div>
+  </form>
+
+  {% endblock %}

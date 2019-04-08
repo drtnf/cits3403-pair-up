@@ -1,26 +1,53 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <script>
+    function confirm_delete(){
+      conf = confirm("Are you sure you want to delete the project. This is irreversible.");
+      if(conf){
+        window.location.replace({{ url_for("delete_project") }});
+      }
+      return;
+    }
+  </script>
+
 
   <div class='table-responsive'>
+  {% if projects %}
+  <p>
+  Pair-Up is a sample Flask application for CITS3403/CITS5505 students to register
+  student groups for the project, and book demonstration times.
+  To get started, register an account, and then enter your project team details.
+  </p>
   <h3>Registered project list</h3>
-  <table class='table-striped'>
+  <table class='table table-striped table-bordered'>
     <tr>
-      <th>Project ID</th>
-      <th>Project Name</th>
       <th>Project Team</th>
+      <th>Project Description</th>
       <th>Demo location</th>
-      <th>Demo time</th></tr>
+      <th>Demo time</th>
+      {% if not current_user.is_anonymous %}
+        <th>Action</th>
+      {% endif %}
+    </tr>  
     {% for p in projects%}
-    <tr>
-      <td>{{p.id}}</td>
-      <td>{{p.name}}</td>
-      <td>{{p.team}}</td>
-      <td>{{p.demonstration.location}}</td>
-      <td>{{p.demonstration.datetime}}</td>
+      <tr>
+        <td>{{p['team']}}</td>
+        <td>{{p['description']}}</td>
+        <td>{{p['lab']}}</td>
+        <td>{{p['time']}}</td>
+        {% if not current_user.is_anonymous %}
+          <td>
+          {% if p['project_id']== current_user.project_id %}
+            <a href='{{url_for("delete_project") }}'><span class="glyphicon glyphicon.garbage">delete</span></a>
+            <a href='{{ url_for("edit_project") }}'><span class="glyphicon glyphicon.pencil">edit</span></a>
+          {% endif %}
+          </td>
+        {% endif %}  
     </tr>
     {% endfor %}
   </table>
+  {% endif%}
   </div>
 {% endblock %}
 
