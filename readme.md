@@ -18,7 +18,7 @@ To exit the environment:
 
 ### Prerequisites
 
-Requires python3, flask, venv, ....
+Requires python3, flask, venv, and sqlite
 
 ```
 Give examples
@@ -28,14 +28,18 @@ Give examples
 
 Install python3, sqlite3
 
-set virtual environment
-`source virtual-environment/bin/activate`
+1. Set up a virtual environment:
+ - use pip or another package manager to install virtualenv package `pip install virtualenv`
+ - start the provided virtual environment
+   `source virtual-environment/bin/activate`
+ - This should include flask and all the required packages
+2. Install sqlite
+ - [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
+ - In \*nix, `sudo apt-get install sqlite`
+3. Build the database: `flask db init`
+4. `flask run`
 
-`pip install flask`
-
-`flask run`
-
-set up database
+This should start the app running on localhost at port 5000, i.e. [http://localhost:5000/index](http://localhost:5000/index)
 
 ## Running the tests
 
