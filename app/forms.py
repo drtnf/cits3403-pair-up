@@ -20,17 +20,12 @@ class RegistrationForm(FlaskForm):
   submit = SubmitField('Sign up')
 
 
-def getLabs():
-    labs = Lab.get_available_labs()
-    choices = []
-    for l in labs:
-      choices.append((str(l.lab_id), l.lab+' '+str(l.time))) 
-    return choices
-
 '''Class to hold form elements for project registration and editting'''
 class ProjectForm(FlaskForm):
   partner_number = StringField('Student Number', validators=[DataRequired(),regexp('^\d{8}$')],default='00000000')
   project_description = StringField('Project Description', validators=[DataRequired()])
-  lab = SelectField('Demonstration Laboratory', choices = getLabs())
+  lab = SelectField('Demonstration Laboratory', choices = [])
   submit = SubmitField('Submit project')
+
+
 

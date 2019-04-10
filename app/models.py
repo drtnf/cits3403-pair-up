@@ -37,9 +37,9 @@ class Student(UserMixin, db.Model):
     return self.project_id is not None
 
   def __repr__(self):
-    return '[Number:{}, Name:{}, CITS3403:{}]'.format(self.number, \
-      self.str(), \
-      self.cits34403)
+    return '[Number:{}, Name:{}, CITS3403:{}]'.format(self.id, \
+      self.__str__(), \
+      self.cits3403)
     
   def __str__(self):
     return self.first_name+' '+self.surname
@@ -86,6 +86,7 @@ class Lab(db.Model):
   def get_available_labs():
     labs = Lab.query.\
         outerjoin(Project, Lab.lab_id==Project.lab_id).\
+        add_columns(Project.project_id,Lab.lab_id, Lab.lab, Lab.time).\
         filter(Project.project_id==None).all()
     return labs
 
