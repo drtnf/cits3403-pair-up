@@ -82,7 +82,7 @@ def new_project():
       flash('Partner not found')      
       return redirect(url_for('index'))
     elif partner is not None and (partner.is_committed() or partner.id==current_user.id):
-      flash(partner.preferedName+' already has a project assigned')
+      flash(partner.prefered_name+' already has a project assigned')
       return redirect(url_for('index'))
     else:
       #check lab availability
