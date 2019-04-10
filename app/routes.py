@@ -9,7 +9,6 @@ from werkzeug.urls import url_parse
 @app.route('/')
 @app.route('/index')
 def index():
-  print('index')
   if current_user.is_authenticated:
     projects = get_all_projects()
   else:  
@@ -73,6 +72,7 @@ def new_project():
     flash(current_user.prefered_name+' already has a project')
     return redirect(url_for('index'))
   form=ProjectForm()
+  form.lab.choices=get_labs()
   if form.validate_on_submit():#for post requests
     project=Project();#generate id
     project.description = form.project_description.data
@@ -120,6 +120,7 @@ def edit_project():
   else:
     partner=None
   form=ProjectForm()#initialise with parameters
+  form.lab.choices=get_labs()
   if form.validate_on_submit():#for post requests
       lab=Lab.query.filter_by(lab_id=form.lab.data).first()
       if lab is None or not lab.is_available():
@@ -166,4 +167,11 @@ def get_all_projects():
   projects.sort(key = lambda p: p['lab']+p['time'])  
   return projects 
 
+
+def get_labs():
+    labs = Lab.get_available_labs()
+    choices = []
+    for l in labs:
+      choices.append((str(l.lab_id), l.lab+' '+str(l.time))) 
+    return choices
 
