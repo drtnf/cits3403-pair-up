@@ -120,10 +120,10 @@ def edit_project():
   else:
     partner=None
   form=ProjectForm()#initialise with parameters
-  form.lab.choices=get_labs()
+  form.lab.choices= get_labs(project.lab_id)
   if form.validate_on_submit():#for post requests
       lab=Lab.query.filter_by(lab_id=form.lab.data).first()
-      if lab is None or not lab.is_available():
+      if lab is None or not (lab.lab_id==project.lab_id or lab.is_available()):
         flash("Lab not available")
       else:
         project.description = form.project_description.data
@@ -167,7 +167,7 @@ def get_all_projects():
   projects.sort(key = lambda p: p['lab']+p['time'])  
   return projects 
 
-
+'''Returns available labs formatted for a select input'''
 def get_labs():
     labs = Lab.get_available_labs()
     choices = []
@@ -175,3 +175,11 @@ def get_labs():
       choices.append((str(l.lab_id), l.lab+' '+str(l.time))) 
     return choices
 
+'''Returns available labs formatted for a select input, including the current lab'''
+def get_labs(lab_id):
+    labs = Lab.get_available_labs()
+    lab = Lab.query.get(lab_id)
+    choices = [(str(lab.lab_id),lab.lab+' '+str(lab.time))]
+    for l in labs:
+      choices.append((str(l.lab_id), l.lab+' '+str(l.time))) 
+    return choices
