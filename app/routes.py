@@ -167,19 +167,14 @@ def get_all_projects():
   projects.sort(key = lambda p: p['lab']+p['time'])  
   return projects 
 
-'''Returns available labs formatted for a select input'''
-def get_labs():
-    labs = Lab.get_available_labs()
-    choices = []
-    for l in labs:
-      choices.append((str(l.lab_id), l.lab+' '+str(l.time))) 
-    return choices
-
 '''Returns available labs formatted for a select input, including the current lab'''
-def get_labs(lab_id):
+def get_labs(lab_id=None):
     labs = Lab.get_available_labs()
-    lab = Lab.query.get(lab_id)
-    choices = [(str(lab.lab_id),lab.lab+' '+str(lab.time))]
+    if lab_id!=None:
+      lab = Lab.query.get(lab_id)
+      choices = [(str(lab.lab_id),lab.lab+' '+str(lab.time))]
+    else:
+      choices = []
     for l in labs:
       choices.append((str(l.lab_id), l.lab+' '+str(l.time))) 
     return choices
