@@ -61,8 +61,6 @@ class ProjectController():
     form=ProjectForm()
     form.lab.choices=ProjectController.get_labs()
     if form.validate_on_submit():#for post requests
-      project=Project();#generate id
-      project.description = form.project_description.data
       partner = Student.query.filter_by(id=form.partner_number.data).first()
       #illegal scenarios
       if partner is None and current_user.cits3403:
@@ -78,15 +76,21 @@ class ProjectController():
           flash("Lab not available")
         else:
           #Everything is good, make commits
-          project.lab_id=lab.lab_id 
-          db.session.add(project)
-          db.session.flush() #generates pk for new project
-          if partner is not None:
-            partner.project_id=project.project_id   
-          current_user.project_id = project.project_id
-          db.session.commit()
+          ProjectController.make_project(form.project_description.data,lab, current_user,partner)
           return redirect(url_for("index"))
     return render_template('new_project.html', student=current_user, form=form)
+
+  def make_project(description, lab, student1, student2):
+    project=Project();
+    project.description = description
+    project.lab_id=lab.lab_id 
+    db.session.add(project)
+    db.session.flush() #generates pk for new project
+    student1.project_id = project.project_id
+    if student2 is not None:
+      student2.project_id=project.project_id   
+    db.session.commit()
+    return project
 
 
   def edit_project():
@@ -102,7 +106,7 @@ class ProjectController():
     else:
       partner=None
     form=ProjectForm()#initialise with parameters
-    form.lab.choices= ProjectControlller.get_labs(project.lab_id)
+    form.lab.choices= ProjectController.get_labs(project.lab_id)
     if form.validate_on_submit():#for post requests
         lab=Lab.query.filter_by(lab_id=form.lab.data).first()
         if lab is None or not (lab.lab_id==project.lab_id or lab.is_available()):

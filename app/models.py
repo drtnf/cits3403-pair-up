@@ -21,11 +21,11 @@ class Student(UserMixin, db.Model):
   password_hash = db.Column(db.String(128))#overkill to hash a four digit pin, but included for learning.
   project_id = db.Column(db.Integer, db.ForeignKey('projects.project_id'),nullable=True) #assigned when project registered
 
-  def registered(number):
-    student = Student.query.filter_by(number = id.data).first()
-    if student.password_hash is not None:
-        raise validationError('Student is already registered')
-    return True
+#  def registered(number):
+#    student = Student.query.filter_by(number = id.data).first()
+#    if student.password_hash is not None:
+#        raise validationError('Student is already registered')
+#    return True
 
   def set_password(self, password):
     self.password_hash = generate_password_hash(password)
