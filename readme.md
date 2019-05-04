@@ -43,11 +43,19 @@ This should start the app running on localhost at port 5000, i.e. [http://localh
 
 ## Running the tests
 
-No tests yet
+A few tests now:
+
+To run unit tests
+`python -m tests.unittest`
+
+To run selenium tests, make sure that you have the 
+appropriate web driver installed. In this case it should be geckodriver for Firefox, 
+and it assumes that it is installed in the test directory.
+Then start the webserver in TestingConfig, and run
+`python -m tests.systemtest`
 
 ### Break down into end to end tests
 
-explanations of tests will come with the tests
 
 ```
 Give an example

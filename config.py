@@ -7,12 +7,15 @@ class Config(object):
   SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProductionConfig(Config):
+  ENV='production'
   SECRET_KEY = os.environ.get('SECRET_KEY')
 #  SQLALCHEMY_DATABASE_URI = Postgres remote 
 
 class DevelopmentConfig(Config):
+  FLASK_ENV='development'
   DEBUG=True
 
 class TestingConfig(Config):
+  ENV='testing'
   SQLALCHEMY_DATABASE_URI = 'sqlite:///'+os.path.join(basedir,'tests/test.db')
   #SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:' #in memory database

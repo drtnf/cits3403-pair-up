@@ -2,14 +2,13 @@ import unittest, os
 from app import app, db
 from app.models import Student, Project, Lab
 
-
-
 class StudentModelCase(unittest.TestCase):
 
   def setUp(self):
     basedir = os.path.abspath(os.path.dirname(__file__))
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'+os.path.join(basedir,'test.db')
-    self.app = app.test_client()#creates a virtual test environment, with no server.
+    app.config['SQLALCHEMY_DATABASE_URI']=\
+        'sqlite:///'+os.path.join(basedir,'test.db')
+    self.app = app.test_client()#creates a virtual test environment
     db.create_all()
     s1 = Student(id='00000000',first_name='Test',surname='Case',cits3403=True)
     s2 = Student(id='11111111',first_name='Unit',surname='Test',cits3403=True)

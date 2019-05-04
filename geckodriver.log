@@ -702,3 +702,73 @@ JavaScript error: http://localhost:5000/index, line 45: SyntaxError: unterminate
 [Parent 13800, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /build/firefox-6m4fHv/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
 [Parent 13800, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox-6m4fHv/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
 1556594154390	Marionette	INFO	Stopped listening on port 39127
+1556688094352	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.JGhQymindzCZ"
+1556688095634	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1556688095635	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1556688095635	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1556688100913	Marionette	INFO	Listening on port 45981
+1556688101440	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: http://localhost:5000/, line 41: SyntaxError: unterminated regular expression literal
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+
+(firefox:31859): GLib-GObject-WARNING **: 13:21:44.463: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7faafc891150' of type 'MaiAtkType139'
+
+(firefox:31859): GLib-GObject-WARNING **: 13:21:44.547: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7faafc891330' of type 'MaiAtkType139'
+
+(firefox:31859): GLib-GObject-WARNING **: 13:21:44.596: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7faafc8914c0' of type 'MaiAtkType139'
+
+(firefox:31859): GLib-GObject-WARNING **: 13:21:44.648: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7faafc8916a0' of type 'MaiAtkType139'
+
+(/usr/lib/firefox/firefox:32137): dconf-WARNING **: 13:21:44.828: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: http://localhost:5000/index, line 45: SyntaxError: unterminated regular expression literal
+1556688107380	Marionette	INFO	Stopped listening on port 45981
+[Parent 31859, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox-6m4fHv/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+[Parent 31859, Gecko_IOThread] WARNING: pipe error (70): Connection reset by peer: file /build/firefox-6m4fHv/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+1556688112401	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.gogaMYMIvwKz"
+1556688113281	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1556688113282	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1556688113282	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1556688118097	Marionette	INFO	Listening on port 45051
+1556688118480	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: http://localhost:5000/, line 41: SyntaxError: unterminated regular expression literal
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+
+(firefox:32636): GLib-GObject-WARNING **: 13:22:00.526: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f4e32b57b50' of type 'MaiAtkType139'
+
+(firefox:32636): GLib-GObject-WARNING **: 13:22:00.597: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f4e1ccf81f0' of type 'MaiAtkType139'
+
+(firefox:32636): GLib-GObject-WARNING **: 13:22:00.647: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f4e1ccf8380' of type 'MaiAtkType139'
+
+(firefox:32636): GLib-GObject-WARNING **: 13:22:00.684: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f4e1ccf8560' of type 'MaiAtkType139'
+
+(/usr/lib/firefox/firefox:431): dconf-WARNING **: 13:22:00.762: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: http://localhost:5000/index, line 45: SyntaxError: unterminated regular expression literal
+1556688123159	Marionette	INFO	Stopped listening on port 45051
+1556954936041	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.S7ggusWaMvfq"
+1556954936752	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1556954936753	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1556954936753	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1556954938542	Marionette	INFO	Listening on port 40027
+1556954938561	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: http://localhost:5000/, line 41: SyntaxError: unterminated regular expression literal
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+
+(firefox:23733): GLib-GObject-WARNING **: 15:29:00.148: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f81bb50dab0' of type 'MaiAtkType139'
+
+(firefox:23733): GLib-GObject-WARNING **: 15:29:00.169: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f81bb50dce0' of type 'MaiAtkType139'
+
+(firefox:23733): GLib-GObject-WARNING **: 15:29:00.197: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f81bb50de70' of type 'MaiAtkType139'
+
+(firefox:23733): GLib-GObject-WARNING **: 15:29:00.214: ../../../../gobject/gsignal.c:3492: signal name 'selection_changed' is invalid for instance '0x7f81b37ef060' of type 'MaiAtkType139'
+
+(/usr/lib/firefox/firefox:23915): dconf-WARNING **: 15:29:00.274: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+JavaScript error: http://localhost:5000/static/bootstrap.min.js, line 6: Error: Bootstrap's JavaScript requires jQuery
+JavaScript error: http://localhost:5000/index, line 45: SyntaxError: unterminated regular expression literal
+1556954942527	Marionette	INFO	Stopped listening on port 40027
+[Parent 23733, Gecko_IOThread] WARNING: pipe error (70): Connection reset by peer: file /build/firefox-6m4fHv/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+[Parent 23733, Gecko_IOThread] WARNING: pipe error (71): Connection reset by peer: file /build/firefox-6m4fHv/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357

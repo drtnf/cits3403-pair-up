@@ -2,6 +2,7 @@ import unittest, os, time
 from app import app, db
 from app.models import Student, Project, Lab
 from selenium import webdriver
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 #To do, find simple way for switching from test context to development to production.
 
@@ -10,7 +11,7 @@ class SystemTest(unittest.TestCase):
   driver = None
   
   def setUp(self):
-    self.driver = webdriver.Firefox(executable_path=r'/home/drtnf/Dropbox/Tim/teaching/2019/CITS3403/pair-up/geckodriver')
+    self.driver = webdriver.Firefox(executable_path=os.path.join(basedir,'geckodriver'))
 
     if not self.driver:
       self.skipTest('Web browser not available')
