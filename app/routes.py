@@ -5,6 +5,10 @@ from app.controllers import StudentController, ProjectController
 from flask import request
 from werkzeug.urls import url_parse
 
+@app.route('/favicon.ico')
+def favicon():
+  return redirect(url_for('static', filename='favicon.ico'), code=302)
+
 @app.route('/')
 @app.route('/index')
 def index():

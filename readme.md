@@ -54,18 +54,9 @@ and it assumes that it is installed in the test directory.
 Then start the webserver in TestingConfig, and run
 `python -m tests.systemtest`
 
-### Break down into end to end tests
-
-
-```
-Give an example
-```
-
-
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-Heroku notes later
+via localhost
 
 ## Built With
 
