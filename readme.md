@@ -43,21 +43,20 @@ This should start the app running on localhost at port 5000, i.e. [http://localh
 
 ## Running the tests
 
-No tests yet
+A few tests now:
 
-### Break down into end to end tests
+To run unit tests
+`python -m tests.unittest`
 
-explanations of tests will come with the tests
-
-```
-Give an example
-```
-
+To run selenium tests, make sure that you have the 
+appropriate web driver installed. In this case it should be geckodriver for Firefox, 
+and it assumes that it is installed in the test directory.
+Then start the webserver in TestingConfig, and run
+`python -m tests.systemtest`
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-Heroku notes later
+via localhost
 
 ## Built With
 

@@ -26,7 +26,7 @@
       <th>Project Description</th>
       <th>Demo location</th>
       <th>Demo time</th>
-      {% if not current_user.is_anonymous %}
+      {% if not current_user.project_id == None %}
         <th>Action</th>
       {% endif %}
     </tr>  
@@ -36,7 +36,7 @@
         <td>{{p['description']}}</td>
         <td>{{p['lab']}}</td>
         <td>{{p['time']}}</td>
-        {% if not current_user.is_anonymous %}
+        {% if not current_user.project_id==None %}
           <td>
           {% if p['project_id']== current_user.project_id %}
             <a href='{{url_for("delete_project") }}'><span class="glyphicon glyphicon.garbage">delete</span></a>

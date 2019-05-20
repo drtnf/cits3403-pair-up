@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Pair-Up!</title>
+      <link rel="stylesheet" media="screen" href="bootstrap.min.css">
+      <link rel="stylesheet" href="bootstrap-theme.min.css">
+      <script src="jquery-3.4.1.min.js"></script>
+      <script src="bootstrap.min.js"></script>
+      <script src="pairup.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body onload='setUp()'>
+    <div class='container'>
+      <div class='col-sm-4'><!-- empty space --></div>
+      <div class='col-sm-4'><h1>Pair Up!</h1></div>
+      <div class='col-sm-4' id='menu-panel'>
+        <button id='log' value='Login' style='float-right'>
+          Login
+        </button>
+        <button id='project' value='Edit Project' style='float-left' hidden=true>
+          New Project
+        </button>
+      </div>
+    </div>
+
+    <div class='jumbotron'>
+      <h3>CITS3403 group allocation tool, and flask sample project.</h3>
+
+      <p> The jQuery, AJAX client-side rendering version!</p>
+    </div>
+      <div class='container' id='login-panel' hidden=True>
+          Student Number: <input type='text' id='snum' type='text' size=8>
+          Pin: <input id='pin' type ='password' size=4>
+          <button name="logSubmit", onclick="login();">Submit</button>
+      </div>
+
+      <div class='container' id='project-panel' hidden=true>
+          <h4 id='title'>Project Details</h4>
+          Partner's Student Number: <input type='text' id='partnerNum' type='text' size=8><br>
+          Project Description: <input type='text' id='projectDesc' type = 'text' size=64><br>
+          Demonstration Lab: <select id='labs' type = 'selection'></select><br>
+          <button id='delete' hidden=true onclick='deleteProject();'>Delete</button>
+          <button id="projectSubmit", onclick='updateProject();'>Submit</button>
+      </div>
+      
+      <div class='container' id='project-list'>
+         <table class='table table-striped table-bordered' id='projectTable' hidden=true>
+           <tr id='tableHeader'><th>Num</th><th>Team</th><th>Project Description</th><th>Demo Lab</th></tr>
+         </table>
+      </div>
+  <!-- Footer -->
+  <footer class="page-footer font-small blue pt-4">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">Written by Tim, 2019, for 
+      <a href="http://teaching.csse.uwa.edu.au/units/CITS3403/index.php?fname=projects&project=yes"> CITS3403 Agile Web Development Project</a> Source available on <a href="https://github.com/drtnf/cits3403-pair-up">github</a>.
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+  </body>
+</html>
+
