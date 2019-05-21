@@ -1,4 +1,6 @@
 #gitignore
 *.db
 *.sql
+virtual-environment/*
+
 
