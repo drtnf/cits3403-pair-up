@@ -61,34 +61,43 @@ class ProjectController():
     form=ProjectForm()
     form.lab.choices=ProjectController.get_labs()
     if form.validate_on_submit():#for post requests
-      partner = Student.query.filter_by(id=form.partner_number.data).first()
+      partners=[current_user]  
+      partners.append(Student.query.filter_by(id=form.partner1_number.data).first())
+      partners.append(Student.query.filter_by(id=form.partner2_number.data).first())
+      partners.append(Student.query.filter_by(id=form.partner3_number.data).first())
+      team = [p for p in partners if p!=None]
       #illegal scenarios
-      if partner is None and current_user.cits3403:
-        flash('Partner not found')      
+      if len(team)<2:
+        flash('At least two students per group')
         return redirect(url_for('index'))
-      elif partner is not None and (partner.is_committed() or partner.id==current_user.id):
-        flash(partner.prefered_name+' already has a project assigned')
+      distinct = False
+      for partner in team:
+        if partner.is_committed():
+          flash(partner.prefered_name+' already has a project assigned')
+          return redirect(url_for('index'))
+        if partner.id != current_user.id:
+          distinct = True
+      if not distinct:    
+        flash('At least two students per group')
         return redirect(url_for('index'))
-      else:
-        #check lab availability
-        lab=Lab.query.filter_by(lab_id=form.lab.data).first()
-        if lab is None or not lab.is_available():
-          flash("Lab not available")
-        else:
-          #Everything is good, make commits
-          ProjectController.make_project(form.project_description.data,lab, current_user,partner)
-          return redirect(url_for("index"))
+      #check lab availability
+      lab=Lab.query.filter_by(lab_id=form.lab.data).first()
+      if lab is None or not lab.is_available():
+        flash("Lab not available")
+        return redirect(url_for('index'))
+      #Everything is good, make commits
+      ProjectController.make_project(form.project_description.data,lab, team)
+      return redirect(url_for("index"))
     return render_template('new_project.html', student=current_user, form=form)
 
-  def make_project(description, lab, student1, student2):
+  def make_project(description, lab, team):
     project=Project();
     project.description = description
     project.lab_id=lab.lab_id 
     db.session.add(project)
     db.session.flush() #generates pk for new project
-    student1.project_id = project.project_id
-    if student2 is not None:
-      student2.project_id=project.project_id   
+    for student in team:
+      student.project_id = project.project_id
     db.session.commit()
     return project
 
@@ -99,12 +108,6 @@ class ProjectController():
       flash(current_user.prefered_name+' does not have a project yet')
       redirect(url_for('new_project'))
     team = project.get_team()
-    if not team[0].id==current_user.id:
-      partner = team[0]
-    elif len(team)>1:
-      partner = team[1]
-    else:
-      partner=None
     form=ProjectForm()#initialise with parameters
     form.lab.choices= ProjectController.get_labs(project.lab_id)
     if form.validate_on_submit():#for post requests
@@ -117,8 +120,7 @@ class ProjectController():
           db.session.add(project)
           db.session.commit()
           return redirect(url_for("index"))
-    return render_template('edit_project.html', student=current_user, partner=partner, project=project, form=form)
-
+    return render_template('edit_project.html', team=team, project=project, form=form)
 
   def delete_project():
     project=Project.query.filter_by(project_id=current_user.project_id).first()
@@ -135,18 +137,17 @@ class ProjectController():
     
   '''returns list of registered projects as a list of dictionaries, with elements "project", "team" and "lab". Used by index to display project list.'''
   def get_all_projects():
-    projectList = Project.query.all()
+    project_list = Project.query.all()
     projects = []
-    for p in projectList:
-      t = p.get_team()
-      if len(t)==2:
-        team = t[0].prefered_name +' & '+t[1].prefered_name
-      else:
-        team = t[0].prefered_name
+    for p in project_list:
+      team = p.get_team()
+      team_str = team[0].prefered_name
+      for i in range(1,len(team)-1):
+          team_str = team_str + (', ' if i < len(team)-1 else ' & ')+team[i].prefered_name
       l = Lab.query.filter_by(lab_id = p.lab_id).first()
       time = str(l.time)
       lab = l.lab
-      projects.append({'project_id':p.project_id,'description':p.description,'team':team,'lab':lab,'time':time})
+      projects.append({'project_id':p.project_id,'description':p.description,'team':teamStr,'lab':lab,'time':time})
     projects.sort(key = lambda p: p['lab']+p['time'])  
     return projects 
   

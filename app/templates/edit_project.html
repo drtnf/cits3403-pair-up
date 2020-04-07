@@ -4,10 +4,14 @@
 <h2>Edit Project</h2>
 
 <div class="container">
-  <h4>{{student.prefered_name}}
-    {% if not partner == None %}
-         and
-         {{partner.prefered_name}}
+  <h4>{{team[0].prefered_name}}
+    {% for i in range(1:len(partners)-1)%}
+         {% if i < len(partners)-1 %}
+         {{', '}}
+         {% else %}
+         {{' \amp; '}}
+         {% endif %}
+         {{team[i].prefered_name}}
     {% endif %}'s Project Page
   </h4> 
   
@@ -28,5 +32,5 @@
       <p> {{ form.submit() }}</p>
     </div>
   </form>
-  <h6>Cannot change partner's with in a project. To dissolve a team, delete the project.</h6>
+  <h6>Cannot change partners with in a project. To dissolve a team, delete the project.</h6>
   {% endblock %}
