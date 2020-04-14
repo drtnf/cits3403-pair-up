@@ -15,7 +15,7 @@
   <div class='table-responsive'>
   {% if projects %}
   <p>
-  Pair-Up is a sample Flask application for CITS3403/CITS5505 students to register
+  Group-Up is a sample Flask application for CITS3403/CITS5505 students to register
   student groups for the project, and book demonstration times.
   To get started, register an account, and then enter your project team details.
   </p>
@@ -34,7 +34,7 @@
       <tr>
         <td>{{p['team']}}</td>
         <td>{{p['description']}}</td>
-        <td>{{p['lab']}}</td>
+        <td><a href='{{p['lab']}}'>{{p['lab']}}</a></td>
         <td>{{p['time']}}</td>
         {% if not current_user.project_id==None %}
           <td>

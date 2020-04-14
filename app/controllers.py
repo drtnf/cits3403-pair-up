@@ -145,10 +145,10 @@ class ProjectController():
       for i in range(1,len(team)-1):
           team_str = team_str + (', ' if i < len(team)-1 else ' & ')+team[i].prefered_name
       l = Lab.query.filter_by(lab_id = p.lab_id).first()
-      time = str(l.time)
+      time = l.time.strformat("%A %d %b, %H:%M") 
       lab = l.lab
       projects.append({'project_id':p.project_id,'description':p.description,'team':teamStr,'lab':lab,'time':time})
-    projects.sort(key = lambda p: p['lab']+p['time'])  
+    projects.sort(key = lambda p: p['time']+p['lab'])  
     return projects 
   
   '''Returns available labs formatted for a select input, including the current lab'''
@@ -156,9 +156,9 @@ class ProjectController():
       labs = Lab.get_available_labs()
       if lab_id!=None:
         lab = Lab.query.get(lab_id)
-        choices = [(str(lab.lab_id),lab.lab+' '+str(lab.time))]
+        choices = [(str(lab.lab_id),lab.time.strformat("%A %d %b, %H:%M")]
       else:
         choices = []
       for l in labs:
-        choices.append((str(l.lab_id), l.lab+' '+str(l.time))) 
+      choices.append((str(l.lab_id),l.time.strformat("%A %d %b, %H:%M"))) 
       return choices

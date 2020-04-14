@@ -27,7 +27,7 @@ class ProjectForm(FlaskForm):
   partner3_number = StringField('Partner 3 Student Number', validators=[DataRequired(),regexp('^\d{8}$')],default='00000000')
   project_description = StringField('Project Description', validators=[DataRequired()])
   lab = SelectField('Demonstration Laboratory', choices = [])
-  submit = SubmitField('Submit project')
+  submit = SubmitField('Register project')
 
 
 

@@ -154,8 +154,8 @@ class Project(db.Model):
 class Lab(db.Model):
   __tablename__='labs'
   lab_id = db.Column(db.Integer, primary_key=True)
-  lab = db.Column(db.String(64))
-  time = db.Column(db.String(64))
+  lab = db.Column(db.String(64)) #zoom url
+  time = db.Column(db.DateTime) # date and time
 
   def get_project(self):
     return Project.query.filter_by(lab_id=self.lab_id).first()
