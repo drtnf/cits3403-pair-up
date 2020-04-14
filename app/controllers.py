@@ -156,9 +156,9 @@ class ProjectController():
       labs = Lab.get_available_labs()
       if lab_id!=None:
         lab = Lab.query.get(lab_id)
-        choices = [(str(lab.lab_id),lab.time.strformat("%A %d %b, %H:%M")]
+        choices = [(str(lab.lab_id),lab.time.strformat("%A %d %b, %H:%M"))]
       else:
         choices = []
       for l in labs:
-      choices.append((str(l.lab_id),l.time.strformat("%A %d %b, %H:%M"))) 
+        choices.append((str(l.lab_id),l.time.strformat("%A %d %b, %H:%M"))) 
       return choices

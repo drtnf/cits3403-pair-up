@@ -3,4 +3,5 @@
 *.sql
 virtual-environment/*
 .vscode/*
+app/__pycache__/*
 
