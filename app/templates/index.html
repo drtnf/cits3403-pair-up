@@ -34,13 +34,13 @@
       <tr>
         <td>{{p['team']}}</td>
         <td>{{p['description']}}</td>
-        <td><a href='{{p['lab']}}'>{{p['lab']}}</a></td>
+        <td><a href='{{p['lab']}}'>Zoom:{{p['lab'][22:33]}}</a></td>
         <td>{{p['time']}}</td>
         {% if not current_user.project_id==None %}
           <td>
           {% if p['project_id']== current_user.project_id %}
-            <a href='{{url_for("delete_project") }}'><span class="glyphicon glyphicon.garbage">delete</span></a>
-            <a href='{{ url_for("edit_project") }}'><span class="glyphicon glyphicon.pencil">edit</span></a>
+            <a href='{{ url_for("edit_project") }}'><span class="glyphicon glyphicon-edit"></span>Edit</a></br>
+            <a href='{{url_for("delete_project") }}'><span class="glyphicon glyphicon-trash"></span>Delete</a>
           {% endif %}
           </td>
         {% endif %}  

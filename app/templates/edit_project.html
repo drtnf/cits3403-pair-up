@@ -5,14 +5,14 @@
 
 <div class="container">
   <h4>{{team[0].prefered_name}}
-    {% for i in range(1:len(partners)-1)%}
+    {% for i in range(1,partners|length-1) %}
          {% if i < len(partners)-1 %}
          {{', '}}
          {% else %}
          {{' \amp; '}}
          {% endif %}
          {{team[i].prefered_name}}
-    {% endif %}'s Project Page
+    {% endfor %}'s Project Page
   </h4> 
   
   <form name='registerProject' action='' method='post' novalidate>

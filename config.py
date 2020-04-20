@@ -5,6 +5,7 @@ class Config(object):
   SECRET_KEY = os.environ.get('SECRET_KEY') or 'sshh!'
   SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///'+os.path.join(basedir,'app.db')
   SQLALCHEMY_TRACK_MODIFICATIONS = False
+  DEBUG=True
 
 class ProductionConfig(Config):
   ENV='production'
@@ -12,7 +13,7 @@ class ProductionConfig(Config):
 #  SQLALCHEMY_DATABASE_URI = Postgres remote 
 
 class DevelopmentConfig(Config):
-  FLASK_ENV='development'
+  ENV='development'
   DEBUG=True
 
 class TestingConfig(Config):

@@ -5,6 +5,7 @@ from app.forms import LoginForm, RegistrationForm, ProjectForm
 from app.models import Student, Project, Lab
 from flask import request
 from werkzeug.urls import url_parse
+from datetime import datetime
 
 class StudentController():
 
@@ -134,20 +135,25 @@ class ProjectController():
       db.session.commit()
       return redirect(url_for("index"))
 
-    
+  '''Get's a string representing the team members'''
+  def get_team_string(team):
+    team_str = team[0].prefered_name
+    for i in range(1,len(team)):
+      team_str = team_str + (', ' if i < len(team)-1 else ' & ')+team[i].prefered_name
+    return team_str  
+
+
   '''returns list of registered projects as a list of dictionaries, with elements "project", "team" and "lab". Used by index to display project list.'''
   def get_all_projects():
     project_list = Project.query.all()
     projects = []
     for p in project_list:
-      team = p.get_team()
-      team_str = team[0].prefered_name
-      for i in range(1,len(team)-1):
-          team_str = team_str + (', ' if i < len(team)-1 else ' & ')+team[i].prefered_name
+      team_str = ProjectController.get_team_string(p.get_team())
       l = Lab.query.filter_by(lab_id = p.lab_id).first()
-      time = l.time.strformat("%A %d %b, %H:%M") 
+      dt = datetime.strptime(l.time, '%Y-%m-%dT%H:%M')
+      time = dt.strftime("%A %d %b, %H:%M") 
       lab = l.lab
-      projects.append({'project_id':p.project_id,'description':p.description,'team':teamStr,'lab':lab,'time':time})
+      projects.append({'project_id':p.project_id,'description':p.description,'team':team_str,'lab':lab,'time':time})
     projects.sort(key = lambda p: p['time']+p['lab'])  
     return projects 
   
@@ -156,9 +162,11 @@ class ProjectController():
       labs = Lab.get_available_labs()
       if lab_id!=None:
         lab = Lab.query.get(lab_id)
-        choices = [(str(lab.lab_id),lab.time.strformat("%A %d %b, %H:%M"))]
+        dt = datetime.strptime(lab.time, '%Y-%m-%dT%H:%M')
+        choices = [(str(lab.lab_id),dt.strftime("%A %d %b, %H:%M"))]
       else:
         choices = []
       for l in labs:
-        choices.append((str(l.lab_id),l.time.strformat("%A %d %b, %H:%M"))) 
+        dt = datetime.strptime(l.time, '%Y-%m-%dT%H:%M')
+        choices.append((str(l.lab_id),dt.strftime("%A %d %b, %H:%M"))) 
       return choices
