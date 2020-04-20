@@ -62,16 +62,13 @@ class Student(UserMixin, db.Model):
   def get_project(self):
     return Project.query.get(self.project_id)
 
-  def get_partner(self):
+  def get_partners(self):
     project = self.get_project()
     if not project:
       return None
     team = project.get_team()
-    if len(team)== 1:
-      return None
-    if team[0]==self:
-      return team[1]
-    return team[0]
+    team.remove(self)
+    return team
 
   '''Adding in dictionary methods to convert to JSON
      Format
@@ -157,8 +154,8 @@ class Project(db.Model):
 class Lab(db.Model):
   __tablename__='labs'
   lab_id = db.Column(db.Integer, primary_key=True)
-  lab = db.Column(db.String(64))
-  time = db.Column(db.String(64))
+  lab = db.Column(db.String(64)) #zoom url
+  time = db.Column(db.String(64)) # date and time
 
   def get_project(self):
     return Project.query.filter_by(lab_id=self.lab_id).first()

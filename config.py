@@ -1,5 +1,8 @@
 import os
+from dotenv import load_dotenv
+
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir,'.env'))
 
 class Config(object):
   SECRET_KEY = os.environ.get('SECRET_KEY') or 'sshh!'
@@ -8,8 +11,8 @@ class Config(object):
 
 class ProductionConfig(Config):
   ENV='production'
-  SECRET_KEY = os.environ.get('SECRET_KEY')
-#  SQLALCHEMY_DATABASE_URI = Postgres remote 
+  SECRET_KEY = os.environ['SECRET_KEY']
+  SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'] 
 
 class DevelopmentConfig(Config):
   FLASK_ENV='development'

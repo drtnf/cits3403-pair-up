@@ -10,10 +10,26 @@
     <div class='form-group'>
       {{form.hidden_tag()}}
       <p>
-      {{ form.partner_number.label }}<br>
-      {{ form.partner_number(size=8) }}
-      (Enter 00000000, for CITS5505 students electing to work alone)
-      {% for error in form.partner_number.errors %}
+      {{ form.partner1_number.label }}<br>
+      {{ form.partner1_number(size=8) }}
+      Enter first partner's student number
+      {% for error in form.partner1_number.errors %}
+      <span style="color:red;">[{{ error}}]</span>
+      {% endfor %}
+      </p>
+      <p>
+      {{ form.partner2_number.label }}<br>
+      {{ form.partner2_number(size=8) }}
+      Enter second partner's student number or 00000000, if only two in the group 
+      {% for error in form.partner2_number.errors %}
+      <span style="color:red;">[{{ error}}]</span>
+      {% endfor %}
+      </p>
+      <p>
+      {{ form.partner3_number.label }}<br>
+      {{ form.partner3_number(size=8) }}
+      Enter third partner's student number or 00000000, if only three in the group 
+      {% for error in form.partner3_number.errors %}
       <span style="color:red;">[{{ error}}]</span>
       {% endfor %}
       </p>

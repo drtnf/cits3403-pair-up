@@ -20,7 +20,9 @@ function setUp(){
   snum = document.getElementById('snum');
   pin = document.getElementById('pin');
   projectPanel = document.getElementById('project-panel');
-  partnerNum = document.getElementById('partnerNum');
+  partnerNum1 = document.getElementById('partnerNum1');
+  partnerNum2 = document.getElementById('partnerNum2');
+  partnerNum3 = document.getElementById('partnerNum3');
   projectDesc = document.getElementById('projectDesc');
   labSelect = document.getElementById('labs');
   projectTable = document.getElementById('projectTable');
@@ -231,7 +233,9 @@ function newProject(){
     }
   }
   var project={};
-  project['partnerNumber']=partnerNum.value;
+  project['partnerNumber1']=partnerNum1.value;
+  project['partnerNumber2']=partnerNum2.value;
+  project['partnerNumber3']=partnerNum3.value;
   project['description']=projectDesc.value;
   project['lab_id']=labSelect.value;
   xhttp.open('POST','/api/students/'+student['id']+'/project',true);

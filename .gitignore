@@ -2,4 +2,7 @@
 *.db
 *.sql
 *.out
-
+virtual-environment/*
+.vscode/*
+app/__pycache__/*
+__/__pycache__/*
