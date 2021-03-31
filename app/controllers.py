@@ -43,6 +43,7 @@ class StudentController():
         return redirect(url_for('index'))
       student.set_password(form.new_pin.data)
       student.prefered_name = form.prefered_name.data
+      student.assign_me = form.assign_me.data
       db.session.commit()
       login_user(student, remember=False)
       return redirect(url_for('index'))
