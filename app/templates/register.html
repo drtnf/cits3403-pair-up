@@ -5,15 +5,19 @@
   <form action="" method = "post">
     {{ form.hidden_tag() }}
     <p>
-      {{ form.student_number.label }}<br>
+      {{ form.student_number.label }}
       {{ form.student_number(size=8) }}<br>
       {% for error in form.student_number.errors %}
       <span style="color: red ;"> [{{ error }}]</span>
       {% endfor %}
     </p>
     <p>
-      {{ form.prefered_name.label }}<br>
+      {{ form.prefered_name.label }}
       {{ form.prefered_name(size=20) }}
+    </p>
+    <p>
+      {{ form.assign_me.label }}
+      {{ form.assign_me() }}
     </p>
     {% if not current_user.is_anonymous %}
     <p>

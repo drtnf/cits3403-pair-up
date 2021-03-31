@@ -22,6 +22,7 @@ class Student(UserMixin, db.Model):
   surname = db.Column(db.String(64))#prepopulate
   prefered_name = db.Column(db.String(64))#defaults to first_name if empty
   cits3403 = db.Column(db.Boolean)#prepopulate
+  assign_me = db.Column(db.Boolean)#prepopulate
   password_hash = db.Column(db.String(128))#overkill to hash a four digit pin....
   project_id = db.Column(db.Integer, db.ForeignKey('projects.project_id'),nullable=True) 
   #token authetication for api
@@ -91,6 +92,7 @@ class Student(UserMixin, db.Model):
         'surname': self.surname,
         'prefered_name': self.prefered_name,
         'cits3403':self.cits3403,
+        'assign_me':self.assign_me,
         '_links': {'project':url_for('get_student_project',id = self.id)}
     }
     return data
@@ -102,9 +104,10 @@ class Student(UserMixin, db.Model):
       self.set_password(data['pin'])
 
   def __repr__(self):
-    return '[Number:{}, Name:{}, CITS3403:{}]'.format(self.id, \
+      return '[Number:{}, Name:{}, CITS3403:{}, assign_me:{}]'.format(self.id, \
       self.__str__(), \
-      self.cits3403)
+      self.cits3403, \
+      self.assign_me)
     
   def __str__(self):
     return self.first_name+' '+self.surname

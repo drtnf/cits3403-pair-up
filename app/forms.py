@@ -14,6 +14,7 @@ class LoginForm(FlaskForm):
 class RegistrationForm(FlaskForm):
   student_number = StringField('Student Number', validators=[DataRequired(), regexp('^\d{8}$', message='must be 8 digits')])
   prefered_name = StringField('Prefered Name', validators=[])
+  assign_me = BooleanField('Assign me to a group, please.', calidators=[])
   pin =PasswordField('Current Pin',validators=[regexp('^\d{4}$',message='must be four digits')],default='0000')
   new_pin = PasswordField('New Pin', validators=[regexp('^\d{4}$', message='must be four digits')])
   new_pin2 = PasswordField('Confirm Pin', validators=[EqualTo('new_pin')])

@@ -12,13 +12,13 @@ gunicorn==19.9.0
 httpie==1.0.3
 idna==2.8
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 Mako==1.0.7
 MarkupSafe==1.1.1
 netifaces==0.10.6
 pkg-resources==0.0.0
 psycopg2-binary==2.8.2
-Pygments==2.3.1
+Pygments==2.7.4
 PyMySQL==0.9.3
 python-dateutil==2.8.0
 python-dotenv==0.10.1
