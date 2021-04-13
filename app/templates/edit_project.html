@@ -4,14 +4,15 @@
 <h2>Edit Project</h2>
 
 <div class="container">
-  <h4>{{team[0].prefered_name}}
-    {% for i in range(1,partners|length-1) %}
-         {% if i < len(partners)-1 %}
+  <h4><a
+      href="mailto:{{team[0].id}}@student.uwa.edu.au">{{team[0].prefered_name}}</a>
+    {% for i in range(1,(team|length)) %}
+         {% if i < (team|length)-1 %}
          {{', '}}
          {% else %}
-         {{' \amp; '}}
+         &amp;
          {% endif %}
-         {{team[i].prefered_name}}
+         <a href="mailto:{{team[i].id}}@student.uwa.edu.au">{{team[i].prefered_name}}</a>
     {% endfor %}'s Project Page
   </h4> 
   
