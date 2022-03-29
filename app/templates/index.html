@@ -34,7 +34,7 @@
       <tr>
         <td>{{p['team']}}</td>
         <td>{{p['description']}}</td>
-        <td><a href='{{p['lab']}}'>Zoom:{{p['lab'][22:33]}}</a></td>
+        <td><a href='{{p['lab'][8:]}}'>{{p['lab'][0:8]}}</a></td>
         <td>{{p['time']}}</td>
         {% if not current_user.project_id==None %}
           <td>
