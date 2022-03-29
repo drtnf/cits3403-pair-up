@@ -3,6 +3,9 @@
 *.sql
 *.out
 virtual-environment/*
+pair-up-venv/*
 .vscode/*
 app/__pycache__/*
 __/__pycache__/*
+certs/*
+Procfile
