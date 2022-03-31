@@ -4,11 +4,9 @@ from flask import jsonify, url_for, request, g, abort
 import time, random
 
 
-secret = 'guess'
-last_update = 0
 update_delta = 120
 words = []
-with open('./app/static/fives.txt','r') as word_file:
+with open('./app/wordle/fives.txt','r') as word_file:
     for word in word_file:
         words.append(word[:-1])
 
@@ -16,21 +14,28 @@ with open('./app/static/fives.txt','r') as word_file:
 '''
 Renews the selected word every update delta seconds
 '''
-def checkTime():
-  global last_update, secret
+def check_time():
+  f = open('./app/wordle/last_update.txt','r')
+  last_update = int(f.read())
+  f.close()
   now = int(time.time())
   if (now-last_update) > update_delta:
       last_update = now
       secret = words[random.randrange(len(words))]
+      f = open('./app/wordle/answer.txt','w')
+      f.write(secret)
+      f.close
+      f = open('./app/wordle/last_update.txt','w')
+      f.write(str(last_update));
+      f.close
+  return update_delta-(now-last_update)   
 
 '''
 Gives time remaining for the current puzzle
 '''
 @app.route('/wordle_time_left', methods=['GET'])
 def wordle_time_left():
-  checkTime()
-  now = int(time.time())
-  response = jsonify({'time_left':update_delta-(now-last_update)})
+  response = jsonify({'time_left':check_time()})
   response.status_code = 201
   return response
 
@@ -39,11 +44,13 @@ route for handling wordle guesses
 '''
 @app.route('/wordle_guess',methods=['POST','GET'])
 def wordle_guess():
-  print(last_update)  
-  checkTime()  
+  check_time()  
   data = request.args or {}
   if 'guess' not in data or not data['guess'].isalpha() or len(data['guess']) != 5:
     return bad_request('Guess must be a five letter word')
+  f = open('./app/wordle/answer.txt','r')
+  secret = f.read()
+  f.close()
   response = jsonify({'outcome':wordle(data['guess'].upper(), secret.upper())})
   response.status_code = 201
   return response
