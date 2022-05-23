@@ -1,6 +1,6 @@
 # Pair Up!
 
-A simple flask app for allocating student pairs in the [CITS3403 project](http://teaching.csse.uwa.edu.au/units/CITS3403/index.php?fname=projects&project=yes).
+A simple flask app for allocating student pairs in the [CITS3403 project](https://teaching.csse.uwa.edu.au/units/CITS3403/).
 
 ## Getting Started
 
