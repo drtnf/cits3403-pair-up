@@ -1,5 +1,7 @@
 # Pair Up!
 
+Testing 15/2/2023
+
 A simple flask app for allocating student pairs in the [CITS3403 project](https://teaching.csse.uwa.edu.au/units/CITS3403/).
 
 ## Getting Started
