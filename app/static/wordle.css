@@ -1,0 +1,30 @@
+div{  
+  text-align: center;
+}
+
+table.wordle{
+  margin-left: auto;
+  margin-right:auto;
+}
+
+table.wordle td.correct{
+  background-color: green;
+}
+
+table.wordle td.misplaced{
+  background-color: orange;
+}
+
+table.wordle tr.active td{
+  background-color: lightgray;
+  padding: 1em;
+  border: solid darkgray;
+  margin: 1em;
+}
+
+table.wordle td{
+  background-color: gray;
+  padding: 1em;
+  border: solid darkgray;
+  margin: 1em;
+}

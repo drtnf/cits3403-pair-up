@@ -164,10 +164,10 @@ class ProjectController():
       if lab_id!=None:
         lab = Lab.query.get(lab_id)
         dt = datetime.strptime(lab.time, '%Y-%m-%dT%H:%M')
-        choices = [(str(lab.lab_id),dt.strftime("%A %d %b, %H:%M")+(' (online)' if (lab.lab_id % 3)==0 else ''))]
+        choices = [(str(lab.lab_id), dt.strftime("%A %d %b, %H:%M")+' ' + str(lab.lab))]
       else:
         choices = []
       for l in labs:
         dt = datetime.strptime(l.time, '%Y-%m-%dT%H:%M')
-        choices.append((str(l.lab_id),dt.strftime("%A %d %b, %H:%M")+(' (online)' if (l.lab_id % 3)==0 else ''))) 
+        choices.append((str(l.lab_id), dt.strftime("%A %d %b, %H:%M")+' ' + str(l.lab))) 
       return choices

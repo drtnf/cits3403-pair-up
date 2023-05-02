@@ -11,14 +11,13 @@ class Config(object):
 
 class ProductionConfig(Config):
   ENV='production'
-  SECRET_KEY = os.environ['SECRET_KEY']
-  SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'] 
 
 class DevelopmentConfig(Config):
-  FLASK_ENV='development'
+  ENV='development'
   DEBUG=True
 
 class TestingConfig(Config):
   ENV='testing'
+  TESTING=True
   SQLALCHEMY_DATABASE_URI = 'sqlite:///'+os.path.join(basedir,'tests/test.db')
   #SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:' #in memory database

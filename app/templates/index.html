@@ -22,6 +22,7 @@
   <h3>Registered project list</h3>
   <table class='table table-striped table-bordered'>
     <tr>
+      <th>#</th>
       <th>Project Team</th>
       <th>Project Description</th>
       <th>Demo location</th>
@@ -32,9 +33,10 @@
     </tr>  
     {% for p in projects%}
       <tr>
+        <td>{{loop.index}}</td>
         <td>{{p['team']}}</td>
         <td>{{p['description']}}</td>
-        <td><a href='{{p['lab'][8:]}}'>{{p['lab'][0:8]}}</a></td>
+        <td>{{p['lab']}}</td>
         <td>{{p['time']}}</td>
         {% if not current_user.project_id==None %}
           <td>
