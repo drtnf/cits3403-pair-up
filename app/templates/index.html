@@ -36,10 +36,7 @@
         <td>{{loop.index}}</td>
         <td>{{p['team']}}</td>
         <td>{{p['description']}}</td>
-        <td><a href='{% if p['lab'][16]=='A'%}https://teams.microsoft.com/l/meetup-join/19%3a958d1639d0d94e2f8675beccd41f83c3%40thread.skype/1651211888082?context=%7b%22Tid%22%3a%2205894af0-cb28-46d8-8716-74cdb46e2226%22%2c%22Oid%22%3a%22934afb4b-fd30-4f7d-a03f-3ca26ef8270d%22%7d
-        {% else %}https://teams.microsoft.com/l/meetup-join/19%3a823fd432f20f4ce2bd79fffb23f20e53%40thread.skype/1651211968209?context=%7b%22Tid%22%3a%2205894af0-cb28-46d8-8716-74cdb46e2226%22%2c%22Oid%22%3a%22934afb4b-fd30-4f7d-a03f-3ca26ef8270d%22%7d
-        {% endif %}
-            '>{{p['lab'][10:]}}</a></td>
+        <td>{{p['lab']}}</td>
         <td>{{p['time']}}</td>
         {% if not current_user.project_id==None %}
           <td>

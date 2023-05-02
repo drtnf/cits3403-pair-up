@@ -31,7 +31,7 @@ function init(){
 
 function getTimeLeft(){
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://127.0.0.1:5000/wordle_time_left", true);
+    xhttp.open("GET", "https://drtnf.net/wordle_time_left", true);
     xhttp.onload = function(e) {
       time_left = JSON.parse(xhttp.responseText).time_left;
       let x = setInterval(function() {
@@ -71,7 +71,7 @@ document.addEventListener("keydown", evt =>{
     }
     const xhttp = new XMLHttpRequest();
     
-    xhttp.open("GET", "http://127.0.0.1:5000/wordle_guess?guess="+guess, true);
+    xhttp.open("GET", "https://drtnf.net/wordle_guess?guess="+guess, true);
     xhttp.onload = function(e) {
       let result = JSON.parse(xhttp.responseText).outcome;
       let sum = 0
