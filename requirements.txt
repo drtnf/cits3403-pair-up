@@ -32,6 +32,6 @@ requests-toolbelt==0.9.1
 six==1.16.0
 SQLAlchemy==1.4.32
 urllib3==1.26.19
-Werkzeug==3.0.6
+Werkzeug==3.1.4
 WTForms==3.0.0
 zipp==3.19.1
